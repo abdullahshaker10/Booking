@@ -4,6 +4,7 @@ from .models import Service
 from .forms import *
 from django.db import transaction
 from django.urls import reverse
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 class ListServices(ListView):
@@ -20,7 +21,7 @@ class ListSlots(ListView):
     def get_queryset(self, *args,  **kwargs):
         service_id = self.kwargs['pk']
         service = Service.objects.get(id=service_id)
-        return service.time_slots.all()
+        return service.slots.all()
 
 
 class ServiceDetail(DetailView):
@@ -28,7 +29,7 @@ class ServiceDetail(DetailView):
     template_name = "services/service_detail.html"
 
 
-class CreateServices(CreateView):
+class CreateServices(LoginRequiredMixin, CreateView):
     form_class = ServiceForm
     template_name = "services/services_form.html"
     success_url = "/"
