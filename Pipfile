@@ -1,0 +1,30 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "*"
+psycopg2-binary = "*"
+pep8 = "*"
+pylint = "*"
+autopep8 = "*"
+pillow = "*"
+django-allauth = "*"
+django-crispy-forms = "*"
+install = "*"
+django-dynamic-formsets = "*"
+django-bootstrap-dynamic-formsets = "==0.4.3"
+django-extra-views = "*"
+
+[dev-packages]
+autopep8 = "*"
+pep8 = "*"
+pylint = "*"
+pylint-django = "*"
+
+[requires]
+python_version = "3.8"
+
+[pipenv]
+allow_prereleases = true

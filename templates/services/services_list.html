@@ -1,0 +1,32 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<!---BOX 1-->
+<div class="row">
+  <!---BOX 1-->
+  {% for service in services %}
+  <div class="col-lg-4">
+    {% if service.image%}
+    <img class="thumbnail" src="{% static service.image.url %}" />
+    {% endif %}
+    <div class="box-element product">
+      <h6>
+        <strong
+          ><a href="{% url 'service_detail' service.id %}"
+            >{{service.title}}
+          </a></strong
+        >
+      </h6>
+      {% for slot in service.time_slots.all %}
+      <p>{{slot.date}}</p>
+      {%endfor%}
+
+      <hr />
+
+      <a class="btn btn-outline-success" href="{% url 'list_slots' service.id%}"
+        >Book</a
+      >
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock content %}

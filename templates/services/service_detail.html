@@ -1,0 +1,14 @@
+{% extends 'base.html' %} 
+{% block title %} 
+{{ object.title }} 
+{% endblock title%}
+{% block content %}
+<div class="book-detail">
+  <h2><a href="">{{ object.title }}</a></h2>
+  <p>title: {{ object.title }}</p>
+  <p>desription: {{ object.desription }}</p>
+  {% for slot in object.slots.all%}
+  <p> slot {{forloop.counter}} date: {{ slot.date }} time: {{slot.start_time}}</p>
+  {% endfor %}
+</div>
+{% endblock content %}

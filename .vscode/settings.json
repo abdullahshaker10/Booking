@@ -1,0 +1,13 @@
+{
+  "python.pythonPath": "/home/shaker/.virtualenvs/booking-_AHznhIK/bin/python",
+  "editor.formatOnSave": true,
+  "python.formatting.provider": "autopep8",
+  "python.linting.enabled": true,
+  "python.linting.lintOnSave": true,
+  "python.linting.pylintEnabled": true,
+  "python.linting.pylintArgs": ["--load-plugin", "pylint_django"],
+
+  "python.linting.pycodestyleEnabled": false,
+  "python.linting.flake8Enabled": false,
+  "git.ignoreLimitWarning": true
+}
