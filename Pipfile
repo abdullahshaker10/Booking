@@ -16,6 +16,10 @@ install = "*"
 django-dynamic-formsets = "*"
 django-bootstrap-dynamic-formsets = "==0.4.3"
 django-extra-views = "*"
+djangorestframework = "*"
+whitenoise = "*"
+gunicorn = "*"
+dj-database-url = "*"
 
 [dev-packages]
 autopep8 = "*"

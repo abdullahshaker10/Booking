@@ -24,6 +24,7 @@ class ListSlots(ListView):
         return service.slots.all()
 
 
+
 class ServiceDetail(DetailView):
     model = Service
     template_name = "services/service_detail.html"

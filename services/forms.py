@@ -7,8 +7,6 @@ from crispy_forms.layout import Layout, Field, Fieldset, Div, HTML, ButtonHolder
 from .custom_layout_object import *
 
 
-
-
 class ServiceSlotsForm(ModelForm):
     class Meta:
         model = TimeSlot
@@ -24,6 +22,7 @@ class ServiceSlotsForm(ModelForm):
             ),
             'start_time': forms.TimeInput(attrs={'type': 'time'})
         }
+
 
 SlotFormSet = inlineformset_factory(
     Service, TimeSlot, form=ServiceSlotsForm,
@@ -50,7 +49,6 @@ class ServiceForm(forms.ModelForm):
                 Field('desription'),
                 Fieldset('Add slots',
                          Formset('slots')),
-                Field('note'),
                 HTML("<br>"),
                 ButtonHolder(Submit('submit', 'save')),
             )

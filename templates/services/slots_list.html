@@ -1,44 +1,40 @@
-{% extends 'base.html' %} 
-{% load static %} 
-{% block content %}
- <div class="table-responsive">
-                    <table class="table table-hover ">
-                        <thead>
-                            <tr>
-                                <th>No.</th>
-                                 <th>Date</th>
-                                <th>Start Time</th>
-                                <th>End Time</th>
-                               
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div class="table-responsive">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>No.</th>
+        <th>Date</th>
+        <th>Start Time</th>
+        <th>End Time</th>
 
-                        {% for slot in slots %}
-                            <tr>
-                                <td>{{ forloop.counter }}</td>
-                                <td>{{slot.date}}</td>
-                                <td>{{slot.start_time | time:"H:i:s"}}</td>
-                                <td>{{slot.end_time | time:"H:i:s" }}</td>
-                                
-                                <td><span class="badge badge-primary">{{ slot.time_slot_owner }}</span></td>
-                                <td>{{ slot.room_id }}</td>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for slot in slots %}
+      <tr class="slots" data-slot="{{slot.id}}">
+        <td>{{ forloop.counter }}</td>
+        <td>{{slot.date}}</td>
+        <td>{{slot.start_time | time:"H:i:s"}}</td>
+        <td>{{slot.end_time | time:"H:i:s" }}</td>
 
-                                <td>
-                                    <form action="#" method="POST">
-                                        {% csrf_token %}
-                                        <input type="hidden" name="owner" value="{{ slot.time_slot_owner.id }}"/>
-                                        <input type="hidden" name="start_time" value="{{slot.start_time | time:'H:i:s'}}"/>
-                                        <input type="hidden" name="end_time" value="{{ slot.end_time | time:'H:i:s'}}"/>
-                                        <input type="hidden" name="room_id" value="{{slot.room_id.id}}"/>
-                                        <input type="hidden" name="date" value="{{date}}"/>
-                                        <input type="submit" value="Book" class="button btn-success" style="cursor:pointer">
-                                    </form>
-                                </td>
-                            </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
+        <td>
+          <span class="badge badge-primary">{{ slot.time_slot_owner }}</span>
+        </td>
+
+        <td>
+          <input
+            type="submit"
+            value="Book"
+            class="button btn-success bookBtn"
+            style="cursor: pointer"
+          />
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+<script type="text/javascript" src="{% static 'js/slot.js'%}"></script>
 {% endblock content %}

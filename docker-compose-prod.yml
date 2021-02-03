@@ -1,0 +1,15 @@
+version: '3.7'
+services:
+ web:
+   build: .
+   command: gunicorn Booking.wsgi -b 0.0.0.0:8000 
+   environment:
+     - ENVIRONMENT=production
+     - SECRET_KEY=sg&i9q$3@$#s+kkx#^g=1r!n-)-9yw$5gsh*3e&m_#e7*kbu24
+     - DEBUG=0
+   ports:
+     - 8000:8000
+   depends_on:
+     - db
+ db:
+  image: postgres:11

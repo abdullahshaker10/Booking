@@ -24,17 +24,8 @@ class TimeSlot(models.Model):
     start_time = models.TimeField()
     end_time = models.TimeField(null=True, blank=True)
     service = models.ForeignKey(
-        Service, on_delete=models.SET_NULL, null=True, blank=True, related_name="slots"
+        Service, on_delete=models.SET_NULL, null=True, related_name="slots"
     )
 
     def __str__(self):
         return str(self.date)
-
-
-class Appointement(models.Model):
-    customer = models.ForeignKey(
-        CustomUser, on_delete=models.SET_NULL, null=True, blank=True
-    )
-    service = models.ForeignKey(
-        Service, on_delete=models.SET_NULL, null=True, blank=True
-    )
